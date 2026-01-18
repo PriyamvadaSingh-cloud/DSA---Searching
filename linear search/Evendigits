@@ -1,0 +1,30 @@
+
+public class Evendigits {
+    
+      static int evendigits(int[] num) {
+        
+        int cnt = 0;
+        
+        for(int nums : num) {
+        int digits = 0;
+        
+        while(nums > 0) {
+            digits++;
+            nums /= 10;
+            
+        }
+        if(digits%2 == 0){
+        cnt++;
+    }
+    
+   
+    }
+       return cnt;
+    }
+
+
+public static void main(String[] args){
+    int arr[]={121,234,56,33,2};
+    System.out.println(evendigits(arr));
+}
+}

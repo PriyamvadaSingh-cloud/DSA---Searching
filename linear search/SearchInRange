@@ -1,0 +1,26 @@
+class SearchInRange{
+
+public static void main(String[] args){
+    int[] arr = {1,2,3,4,5};
+    int start = 0;
+    int end = arr.length-1;
+    int target = 4;
+    System.out.println(searchindex(start, end, target, arr));
+
+}
+
+static int searchindex (int start, int end, int target, int[] arr) {
+    if(arr.length == 0) {
+        return -1;
+    }
+
+    for(int index = start; index <= end; index++){
+          int element = arr[index];
+          if(element == target){
+            return index;
+          }
+          
+    }
+    return -1;
+}
+}

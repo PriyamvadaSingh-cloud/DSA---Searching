@@ -1,0 +1,13 @@
+class SearchIn2Darray {
+    public static void main(String[] args) {
+        int[][] arr = {
+            {1,2,3,4};
+            {5,6,7,9};
+            {10,18,12,13};
+        }
+        int target = 56;
+        int[] ans = search(arr,target);
+        System.out.println(Arrays.toString(ans));
+         System.out.println(max(arr);
+    }
+}

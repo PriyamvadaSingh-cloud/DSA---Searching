@@ -1,0 +1,25 @@
+class Main{
+    public static void main(String[] args){
+        
+    static int maximumWealth(int[][] arr) {
+        
+        int ans = Integer.MIN_VALUE;
+        
+        for(int[] ints : arr){
+            int sum = 0;
+            
+        for(int anInt : ints){ // will iterate for each column of every row
+          sum += arr[i][j];  
+            }
+            
+            if(sum > ans) {
+                ans = sum;
+            }
+            
+        }
+        return ans;
+    }
+    }
+}
+    
+    
