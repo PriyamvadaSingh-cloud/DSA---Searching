@@ -1,0 +1,49 @@
+class FirstAndLastPosition {
+
+    public int[] search(int[] arr, int target) {
+        int first = findFirst(arr, target);
+        int last = findLast(arr, target);
+        return new int[]{first, last};
+    }
+
+    // Find first occurrence
+    private int findFirst(int[] arr, int target) {
+        
+        int low = 0, high = nums.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target) {
+                ans = mid;
+                high = mid - 1; // move left
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+
+    // Find last occurrence
+    private int findLast(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        int ans = -1;
+
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] == target) {
+                ans = mid;
+                low = mid + 1; // move right
+            } else if (nums[mid] < target) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return ans;
+    }
+}
