@@ -1,0 +1,28 @@
+class sqyareroot {
+    public static void main(String[] args) {
+        int n = 16;
+        System.out.println(root(n));
+    }
+
+    static int root(int n) {
+
+        if (n < 2) return n;
+
+        int low = 1;
+        int high = n / 2;
+        int ans = 0;
+
+        while (low <= high) {
+
+            int mid = low + (high - low) / 2;
+
+            if (mid <= n / mid) {
+                ans = mid;        // mid is valid
+                low = mid + 1;    // try bigger
+            } else {
+                high = mid - 1;   // mid too big
+            }
+        }
+        return ans;
+    }
+}
