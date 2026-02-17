@@ -1,0 +1,23 @@
+class Reachanum {
+    public int reachNumber(int target) {
+        int position = 0;
+        int moves = 0;
+
+         if(target <0){
+            target = -target;
+         }
+        while(true) {
+           moves++;
+           position+=moves;
+        
+
+        if(position == target){
+            return moves;
+        }
+
+        if(position > target && (position - target ) %2 == 0){
+             return moves;
+        }
+    }
+    }
+}
