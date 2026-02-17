@@ -1,0 +1,28 @@
+  class Findrightinterval {
+    public int[] findRightInterval(int[][] intervals) {
+
+        int n = intervals.length;
+        int[] result = new int[n];
+        
+        for(int i=0;i<n;i++){
+          int end = intervals[i][1];
+          int minstart = Integer.MAXVALUE;
+          int index = -1;
+
+          for(int j=0; j<n; j++) {
+
+           int start = [i][0];
+           if(start>end && start<minstart){
+            minstart = start;
+            index = j;
+           }
+
+          }      
+            result[i] = index;  
+           }
+ 
+      
+        }
+        return result;
+    }
+        
