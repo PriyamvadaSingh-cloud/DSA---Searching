@@ -1,0 +1,95 @@
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+
+        int count = 0;
+        int i = 0;
+        int j = 0;
+
+        while(i < g.length && j < s.length) {
+
+             if( s[j] >= g[i]) {
+
+                count++;
+                i++;
+                j++;
+             } else {
+                j++;
+             }
+        }
+        return count++;
+                            
+        }
+    }
+
+
+pattern :Trigger words (VERY IMPORTANT)
+
+When you see:
+
+Two arrays
+Matching / assigning one-to-one
+
+Condition like:
+
+s[j] >= g[i]
+Goal:
+👉 maximize count
+✅ Instantly think:
+GREEDY + SORTING + TWO POINTER
+🔹 Why GREEDY?
+
+Because:
+
+👉 At every step, you make the best local decision
+
+Here:
+
+Give smallest possible cookie to satisfy smallest greed
+
+No need to think future deeply → greedy works.
+
+🔹 Visual Pattern Recognition
+Whenever you see this structure:
+Array A → requirements (greed)
+Array B → resources (cookies)
+
+Condition → resource >= requirement
+Goal → maximize matches
+
+👉 This is classic greedy matching
+
+🔥 Mental Shortcut (Exam Trick)
+
+Just ask yourself:
+
+❓ “Can I sort and match from smallest?”
+
+If answer = YES
+👉 Then it's Greedy
+
+🔹 Compare with other patterns
+Pattern	पहचान कैसे करें
+Cyclic Sort	numbers 0…n / 1…n
+Hashing	duplicates / frequency
+Sliding Window	subarray / substring
+Two Pointer	sorted array
+Greedy (THIS)	matching + maximize count
+🔹 Similar problems (same pattern)
+
+These will feel SAME once you understand:
+
+Boats to Save People → weight matching
+Maximum Units on a Truck
+Minimize Absolute Difference
+Activity Selection Problem
+🔥 One-line पहचान
+"Match two sorted arrays to maximize valid pairs"
+
+
+
+similar problems : Boats to Save People → weight matching
+Maximum Units on a Truck 
+Minimize Absolute Difference
+Activity Selection Problem 
