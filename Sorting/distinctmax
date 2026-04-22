@@ -1,0 +1,29 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        
+        int count = 1;
+        int n = nums.length;
+
+        for(int i = n-2; i >= 0; i--) {
+            if(nums[i] != nums[i+1]) {
+                  count++;
+             }
+            if(count == 3){
+                return nums[i];
+             }
+        }
+        return nums[n - 1];
+}
+}
+
+//pattern:1. Sort the array in ascending order.
+//2. Initialize a count variable to keep track of distinct numbers. 
+//3. Iterate through the sorted array from the second last element to the beginning.
+//4. If the current number is different from the next number, increment the count. 
+//5. If the count reaches 3, return the current number as the third maximum.
+//6. If the loop ends and the count is less than 3, return the last element of the array, which is the maximum number.  
+//7.kth largest element in an array can be found by sorting the array and returning the element at index n-k, where n is the length of the array.
+//9. neither max or min 
+
+//8. Time complexity: O(n log n) due to sorting the array.
