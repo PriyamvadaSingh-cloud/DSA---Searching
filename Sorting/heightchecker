@@ -1,0 +1,120 @@
+class heightchecker {
+
+    public int heightChecker(int[] heights) {
+
+        int expected[] = heights.clone();
+        Arrays.sort(expected);
+
+        int count =0;
+        for(int i=0; i<heights.length; i++) {
+            if(heights[i] != expected[i]) {
+                count++;
+            }
+        }
+        return count;
+        
+        }
+}
+
+
+
+//Sorting Approach (Your current solution)
+Code logic recap:
+Copy array → O(n)
+Sort array → O(n log n)
+Compare arrays → O(n)
+⏱️ Time Complexity
+👉 Overall:
+O(n log n)
+👉 Why?
+Sorting dominates everything.
+Java uses Dual-Pivot QuickSort for primitives → average O(n log n)
+📌 Example:
+n = 6
+heights = [1,1,4,2,1,3]
+
+Sorting steps roughly:
+
+Split → Merge → Compare
+
+Even if comparisons are fast, sorting still takes:
+
+≈ n log n = 6 * log(6) ≈ 6 * 2.5 ≈ 15 operations
+
+Then:
+
+Comparison loop = 6 operations
+
+👉 Total ≈ 21 operations → dominated by sorting
+
+📦 Space Complexity
+O(n)
+👉 Why?
+You create a new array:
+int[] expected = heights.clone();
+
+This stores n elements → extra memory
+
+✅ 2. Optimized Approach (Counting Sort)
+
+Since:
+
+1 <= heights[i] <= 100
+
+👉 Range is small → we can avoid sorting
+
+⏱️ Time Complexity
+O(n + k)
+
+Where:
+
+n = number of students
+k = range of values (max height = 100)
+
+👉 So:
+
+O(n + 100) ≈ O(n)
+📌 Why?
+
+Steps:
+
+Count frequencies → O(n)
+Rebuild sorted order → O(n)
+Compare → O(n)
+
+Total:
+
+O(n + n + n) = O(n)
+📦 Space Complexity
+O(1)
+👉 Why?
+Count array size is fixed:
+int[] count = new int[101];
+
+👉 Always 101 → constant space
+
+📌 Example (Same Input)
+heights = [1,1,4,2,1,3]
+Step 1: Count
+count[1] = 3
+count[2] = 1
+count[3] = 1
+count[4] = 1
+Step 2: Build expected order
+[1,1,1,2,3,4]
+Step 3: Compare → mismatches = 3
+🔥 Final Comparison
+Approach	Time Complexity	Space Complexity	When to Use
+Sorting	O(n log n)	O(n)	General case
+Counting Sort	O(n)	O(1)	When range is small
+💡 Interview Tip
+
+If interviewer sees constraint:
+
+heights[i] <= 100
+
+👉 They EXPECT you to say:
+
+“We can optimize using counting sort to O(n) time.”
+
+
