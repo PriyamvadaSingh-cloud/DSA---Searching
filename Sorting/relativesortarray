@@ -1,0 +1,151 @@
+class relativesortarray {
+    public int[] relativeSortArray(int[] arr1, int[] arr2) {
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for(int i=0; i<arr2.length; i++) {
+          for(int j=0; j<arr1.length; j++) {
+               if(arr2[i] == arr1[j]) {
+                result.add(arr1[j]);
+                arr1[j] = -1;
+               }     
+            }
+        }
+
+
+          ArrayList<Integer> remaining = new ArrayList<>();
+
+        for (int num : arr1) {
+            if (num != -1) {
+                remaining.add(num);
+            }
+        }
+
+        Collections.sort(remaining);
+
+        result.addAll(remaining);
+
+       
+        int[] ans = new int[result.size()];
+        for (int i = 0; i < result.size(); i++) {
+            ans[i] = result.get(i);
+        }
+
+        return ans;
+    }
+}
+
+  
+
+//Time Complexity: O(n log n) where n is the
+//  length of arr1. This is because we sort the
+//  remaining elements of arr1 that are not in arr2.
+
+//Space Complexity: O(n) where n is the length of arr1.
+//  This is because we use an additional list to store the result 
+//  and the remaining elements.
+
+
+Time Complexity
+🔹 Step 1: Nested Loop
+
+Code structure:
+
+for (i in arr2)
+    for (j in arr1)
+👉 How many times does it run?
+Outer loop → runs m times (arr2.length)
+Inner loop → runs n times (arr1.length)
+
+So total operations:
+
+n + n + n + ... (m times)
+= n * m
+💡 Why this happens
+
+For every element in arr2, we scan the entire arr1 again
+
+Example:
+
+arr2 has 6 elements
+arr1 has 11 elements
+
+We scan arr1:
+
+6 × 11 = 66 checks
+
+Even if we already found elements, we still keep scanning → no optimization
+
+🔹 Step 2: Collect remaining
+for (num in arr1)
+
+Runs:
+
+O(n)
+🔹 Step 3: Sorting remaining
+
+Let remaining elements = k
+
+Sorting takes:
+
+O(k log k)
+✅ Final Time Complexity
+O(n * m + n + k log k)
+
+We simplify:
+
+n*m dominates
+n is smaller than n*m
+
+👉 Final:
+
+O(n * m + k log k)
+🚨 Worst Case
+
+If almost all elements are not in arr2:
+
+k ≈ n
+
+So:
+
+O(n*m + n log n)
+📦 Space Complexity
+What extra space are we using?
+1. Result list
+
+Stores all elements → size = n
+
+O(n)
+2. Remaining list
+
+In worst case → all elements go here
+
+O(n)
+3. Ignoring input array (arr1)
+
+We modify it in-place (-1 marking), so no extra array
+
+✅ Final Space Complexity
+O(n)
+🧠 Intuition Summary
+Why time is high?
+
+Because:
+
+We re-scan arr1 again and again
+No memory of previous work
+No direct access → only linear search
+
+👉 That’s classic brute force inefficiency
+
+Why space is O(n)?
+
+Because:
+
+We build a new result
+We temporarily store leftover elements
+⚡ One-line understanding
+Time: slow because of repeated full scans → O(n*m)
+Space: linear because we store output → O(n)
+
+//pattern : sorting, array
+// word : distinct, order, relative, sort, array
