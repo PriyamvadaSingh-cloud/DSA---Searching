@@ -1,0 +1,58 @@
+import java.util.*;
+
+class ranktransform {
+    public int[] arrayRankTransform(int[] arr) {
+
+        
+        int[] temp = arr.clone();
+
+        
+        Arrays.sort(temp);
+
+       
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int rank = 1;
+
+       
+        for (int num : temp) {
+
+            if (!map.containsKey(num)) {
+
+                map.put(num, rank);
+
+                rank++;
+            }
+        }
+
+        
+        for (int i = 0; i < arr.length; i++) {
+
+            arr[i] = map.get(arr[i]);
+        }
+
+        return arr;
+    }
+}
+
+//optimal solution using Hashmap
+//Time Complexity
+//Sorting
+//O(n log n)
+//HashMap operations
+//O(n)
+//Total:
+//O(n log n)
+//Space Complexity
+//O(n)
+//pattern : Sorting + HashMap
+//Similar Pattern Questions
+
+These also use Sorting + HashMap:
+
+Two Sum (HashMap)
+Relative Sort Array
+Top K Frequent Elements
+Sort People
+Frequency Sort
+Coordinate Compression problems
