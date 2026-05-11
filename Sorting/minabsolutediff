@@ -1,0 +1,62 @@
+//keyword: distinct
+class Solution {
+    public List<List<Integer>> minimumAbsDifference(int[] arr) {
+
+        // Step 1: Sort array
+        Arrays.sort(arr);
+
+        List<List<Integer>> ans = new ArrayList<>();
+
+        // Step 2: Find minimum difference
+        int minDiff = Integer.MAX_VALUE;
+
+        for(int i = 1; i < arr.length; i++) {
+
+            int diff = arr[i] - arr[i - 1];
+
+            minDiff = Math.min(minDiff, diff);
+        }
+
+        // Step 3: Collect pairs having minimum difference
+        for(int i = 1; i < arr.length; i++) {
+
+            int diff = arr[i] - arr[i - 1];
+
+            if(diff == minDiff) {
+
+                List<Integer> pair = new ArrayList<>();
+
+                pair.add(arr[i - 1]);
+                pair.add(arr[i]);
+
+                ans.add(pair);
+            }
+        }
+
+        return ans;
+    }
+}
+
+
+Time Complexity
+//Sorting
+//O(n log n)
+//Traversing array twice
+//O(n)
+
+//Total:
+
+//O(n log n)
+Space Complexity
+
+//Ignoring output list:
+
+//O(1)
+
+//Including answer list:
+
+//O(k)
+
+//where k = number of pairs stored.
+
+//pattern : Sorting + Two Passes
