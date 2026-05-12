@@ -1,0 +1,345 @@
+class numsmallerthancurrent {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+
+        
+        for (int i=0; i<n; i++) {
+            int count = 0;
+
+            for(int j=0; j<n; j++) {
+                if(nums[i] > nums[j]) {
+                    count++;
+                }
+            }
+            result[i] = count;
+        }
+        return result;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Time Complexity
+
+Outer loop → n
+
+Inner loop → n
+
+Total:
+
+O(n
+2
+)
+
+Optimal Approach
+
+Since constraints are:
+
+0 <= nums[i] <= 100
+
+We can use counting/frequency array.
+
+Optimal Idea
+Count frequency of every number
+Convert frequency into prefix sum
+Prefix sum tells:
+how many numbers are smaller
+Optimal Code
+class Solution {
+    public int[] smallerNumbersThanCurrent(int[] nums) {
+
+        int[] freq = new int[101];
+
+        // Count frequency
+        for(int num : nums) {
+            freq[num]++;
+        }
+
+        // Prefix sum
+        for(int i = 1; i < 101; i++) {
+            freq[i] = freq[i] + freq[i - 1];
+        }
+
+        int[] result = new int[nums.length];
+
+        for(int i = 0; i < nums.length; i++) {
+
+            if(nums[i] == 0) {
+                result[i] = 0;
+            } else {
+                result[i] = freq[nums[i] - 1];
+            }
+        }
+
+        return result;
+    }
+}
+
+
+
+
+//1. Time Complexity
+
+Time complexity tells:
+
+“How much time does the algorithm take as input size grows?”
+
+It does NOT mean actual seconds.
+
+It means:
+
+how many operations are happening
+how fast the algorithm grows
+
+Example:
+
+for(int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+
+Loop runs n times.
+
+So time complexity is:
+
+O(n)
+
+because operations increase linearly with input size.
+
+Common Time Complexities
+Complexity	Meaning	Fast or Slow
+O(1)	Constant	Very Fast
+O(log n)	Logarithmic	Fast
+O(n)	Linear	Good
+O(n log n)	Sorting complexity	Good
+O(n²)	Nested loops	Slow for large input
+O(2ⁿ)	Exponential	Very Slow
+Example of O(1)
+int x = arr[0];
+
+Only one operation.
+
+
+
+//Time complexity:
+
+O(1)
+
+Example of O(n)
+for(int i = 0; i < n; i++) {
+    System.out.println(i);
+}
+
+Runs n times.
+
+Time complexity:
+
+O(n)
+
+Example of O(n²)
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < n; j++) {
+        System.out.println(i + " " + j);
+    }
+}
+
+Outer loop → n
+
+Inner loop → n
+
+Total operations:
+
+n×n=n
+2
+
+So complexity:
+
+O(n
+2
+)
+
+//2. Space Complexity
+
+Space complexity tells:
+
+“How much extra memory is used by the algorithm?”
+
+Extra memory means:
+
+arrays
+hashmaps
+recursion stack
+variables
+
+Example:
+
+int sum = 0;
+
+Only one variable.
+
+Space complexity:
+
+O(1)
+
+Example:
+
+int[] arr = new int[n];
+
+Array size depends on n.
+
+Space complexity:
+
+O(n)
+
+
+
+
+Why Prefix Sum Works
+
+Suppose:
+
+freq = [0,1,2,1]
+
+Meaning:
+
+0 occurs 0 times
+1 occurs 1 time
+2 occurs 2 times
+3 occurs 1 time
+
+After prefix sum:
+
+freq = [0,1,3,4]
+
+Now:
+
+freq[2] = 3
+
+means:
+
+3 numbers are <= 2
+
+So for number 3:
+
+smaller numbers = freq[2]
+
+which is 3.
+
+Pattern of This Question
+
+This is mainly:
+
+Array
+Counting
+Frequency Array
+Prefix Sum
+
+Very common when:
+
+range is small (0 to 100)
+counting elements
+finding smaller/greater frequencies
+
+This is an important interview pattern.
+
+For Your LeetCode Question
+
+Brute force solution:
+
+for(int i = 0; i < n; i++) {
+    for(int j = 0; j < n; j++) {
+    }
+}
+
+Time complexity:
+
+O(n2)
+
+because nested loops.
+
+Space complexity:
+
+int[] result = new int[n];
+
+So:
+
+O(n)
+
+Easy Trick to Find Complexity
+Time Complexity
+
+Check:
+
+loops
+recursion
+sorting
+One loop
+for(...)
+
+→ O(n)
+
+Two nested loops
+for(...)
+   for(...)
+
+→ O(n²)
+
+Space Complexity
+
+Check:
+
+extra arrays
+hashmaps
+stacks
+recursion
+
+If no extra structure:
+
+→ O(1)
+
+If array of size n:
+
+→ O(n)
+
+Interview Definition
+Time Complexity
+
+Rate at which execution time grows with input size.
+
+Space Complexity
+
+Amount of extra memory used with respect to input size.
+
+
+
+
+
+
+
+
+
+
+
