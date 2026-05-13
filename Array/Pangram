@@ -1,0 +1,15 @@
+class PangramChecker {
+    public boolean checkIfPangram(String sentence) {
+
+        // Check every alphabet from a to z
+        for(char ch = 'a'; ch <= 'z'; ch++) {
+
+            // If any character is missing
+            if(sentence.indexOf(ch) == -1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
