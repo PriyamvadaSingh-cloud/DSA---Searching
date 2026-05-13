@@ -1,0 +1,30 @@
+class Solution {
+    public double average(int[] salary) {
+
+        int min = salary[0];
+        int max = salary[0];
+        int sum = 0;
+
+        // Traverse the array
+        for(int i = 0; i < salary.length; i++) {
+
+            sum = sum + salary[i];
+
+            // Find minimum salary
+            if(salary[i] < min) {
+                min = salary[i];
+            }
+
+            // Find maximum salary
+            if(salary[i] > max) {
+                max = salary[i];
+            }
+        }
+
+        // Remove min and max from total sum
+        sum = sum - min - max;
+
+        // Calculate average
+        return (double) sum / (salary.length - 2);
+    }
+}
