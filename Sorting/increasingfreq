@@ -1,0 +1,10 @@
+//same as reversing sub-array question
+//beacuse there also we have to count frequency and here also
+// pattern is same as counting frequency and comparing frequencies
+// so we can use the same code as reversing sub-array question
+// pattern : hashing
+
+
+
+
+
