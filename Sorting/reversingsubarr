@@ -1,0 +1,37 @@
+class Solution {
+    public boolean canBeEqual(int[] target, int[] arr) {
+
+        int[] freq = new int[1001];
+
+        for(int num : target) {
+            freq[num]++;
+        }
+
+        for(int num : arr) {
+            freq[num]--;
+        }
+
+        for(int count : freq) {
+            if(count != 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+//pattern : Hashing / Frequency Count Pattern
+//reaaranged
+
+More specifically:
+
+Frequency Array Pattern
+
+because you are:
+
+counting occurrences
+comparing frequencies
+using an array/hashmap for counting
+
+// https://chatgpt.com/share/6a08b1d7-109c-83a5-88e4-0e68b41a7545
