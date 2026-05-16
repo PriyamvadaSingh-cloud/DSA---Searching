@@ -1,0 +1,22 @@
+class Solution {
+    public boolean canMakeArithmeticProgression(int[] arr) {
+        Arrays.sort(arr);
+
+        int diff = arr[1] - arr[0];
+
+        for(int i=2; i<arr.length; i++) {
+            if(arr[i] - arr[i-1] != diff){
+                return false;
+            }
+
+        }
+        return true;
+    }
+}
+
+//pattern : sorting + fixed difference pattern.
+// time complexity : O(n log n) due to sorting
+//why O(n log n) ? because of the sorting step. 
+// The rest of the operations (calculating differences and comparing) 
+// take O(n) time, but the dominant factor is the sorting step, which is O(n log n).
+// space complexity : O(1) if we ignore the space used by sorting algorithm, otherwise
