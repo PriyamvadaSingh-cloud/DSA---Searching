@@ -1,0 +1,18 @@
+class Solution {
+    public String restoreString(String s, int[] indices) {
+
+    char[] ans = new char[s.length()];
+
+      for(int i=0; i<s.length(); i++) {
+        ans[indices[i]] = s.charAt(i);
+     } 
+     return new String(ans); 
+    }
+}
+
+//Shuffle String (1528) → index mapping ✅
+//Build Array from Permutation (1920) → index mapping
+//Sort characters by frequency → mapping + counting
+
+
+//Replace elements based on index → direct placement
